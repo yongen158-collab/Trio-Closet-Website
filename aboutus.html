@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>About Us | TRIO CLOSET</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Page-specific styles */
+        .about-hero {
+            background: linear-gradient(135deg, rgba(139,115,85,0.06), rgba(217,186,130,0.04));
+            padding: 60px 0;
+        }
+        .about-hero .lead {
+            color: #6b5345;
+            font-size: 1.05rem;
+        }
+        .values-list .card {
+            border: none;
+            background: #fff;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+            transition: transform .2s;
+        }
+        .values-list .card:hover { transform: translateY(-6px); }
+        .team-member {
+            text-align: center;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+        }
+        .team-member img {
+            width: 140px;
+            height: 130px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 12px;
+        }
+        .timeline {
+            position: relative;
+            margin: 30px 0;
+            padding-left: 20px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 18px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(#d9ba82, #8b7355);
+            border-radius: 4px;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 28px;
+            padding-left: 36px;
+        }
+        .timeline-item .dot {
+            position: absolute;
+            left: -2px;
+            top: 6px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #fff;
+            border: 4px solid #d9ba82;
+        }
+        .cta-card {
+            background: linear-gradient(90deg, rgba(217,186,130,0.1), rgba(139,115,85,0.03));
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+        }
+        @media (max-width: 575px) {
+            .about-hero { padding: 36px 0; }
+            .team-member img { width: 96px; height: 96px; }
+        }
+    </style>
+</head>
+<body>
+    
+<!-- Header Section -->
+<header class="header-area">
+    <!-- Top Header -->
+    <div class="top-header">
+        <div class="container">
+                <div class="logo">
+                <img src="images/logo.jpeg" alt="Trio Closet Fashion Store">                
+            </div>
+                    <div class="header-social text-end">
+                        <a href="https://www.facebook.com/p/Trio-Closet-61584444351755/"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/triocloset13?igsh=MTA0a2xodmRkeWtyaw=="><i class="fab fa-instagram"></i></a>
+                        <a href="+601-2187868"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- Main Navigation -->
+   <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                <h2 class="title-fonts">TRIO CLOSET</h2>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-bs-toggle="dropdown">
+                                Pages
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="return.html" class="white-color">Return & Exchange</a></li>
+                                <li><a class="dropdown-item" href="termsofcondition">Terms of Condition</a></li>
+                                <li><a class="dropdown-item" href="faq.html">FAQ</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="shop.html">Shop</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="aboutus.html">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                    </ul>
+                    
+                    <div class="header-actions d-flex align-items-center gap-2">
+
+                    <!-- Search Bar -->
+                    <form class="search-form d-flex align-items-center" onsubmit="return handleSearch(event)">
+                        <input 
+                            type="text" 
+                            id="searchInput" 
+                            class="form-control search-input" 
+                            placeholder="Search products..."
+                            aria-label="Search"
+                        >
+                        <button type="submit" class="btn search-submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+
+                    <!-- User -->
+                    <a href="#" class="user-btn ms-2">
+                        <i class="fas fa-user"></i>
+                    </a>
+
+                    <!-- Cart -->
+                    <a href="cart.html" class="cart-btn ms-2">
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>
+
+                </div>
+                </div>
+            </div>
+        </nav>
+        </header>
+
+<!-- Hero -->
+<section class="about-hero">
+    <div class="container">
+        <div class="row align-items-center gy-4">
+            <div class="col-lg-6">
+                <h1 class="section-title">About TRIO CLOSET</h1>
+                <p class="lead">We are a boutique fashion store offering curated collections for men, women and children.
+                   Our focus is on premium feel, affordable pricing and excellent customer service — made with care in Malaysia.</p>
+                <p>Since our beginning, we've been dedicated to bringing thoughtful design, quality materials and great value to everyday wardrobes.</p>
+                <a href="shop.html" class="btn btn-primary mt-3">Browse Collections</a>
+            </div>
+            <div class="col-lg-6 text-center">
+                <img src="images/About Trio Closet.jpeg" alt="About Trio Closet" class="img-fluid rounded" style="max-height:360px; object-fit:cover;">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Mission & Values -->
+<section class="py-5">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <h3>Our Mission</h3>
+                <p>To provide stylish, durable clothing and accessories while keeping sustainability and customer service at the forefront. We want our customers to feel confident and comfortable in every piece.</p>
+
+                <h3 class="mt-4">What We Value</h3>
+                <ul class="list-unstyled about-features">
+                    <li class="mb-2"><i class="fas fa-check-circle text-secondary me-2"></i>Quality materials and craftsmanship</li>
+                    <li class="mb-2"><i class="fas fa-check-circle text-secondary me-2"></i>Transparent pricing and fair sourcing</li>
+                    <li class="mb-2"><i class="fas fa-check-circle text-secondary me-2"></i>Responsive, friendly customer service</li>
+                </ul>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="values-list row g-3">
+                    <div class="col-md-6">
+                        <div class="card p-3 text-center">
+                            <div class="mb-2"><i class="fas fa-seedling fa-2x text-success"></i></div>
+                            <h5>Eco-aware</h5>
+                            <p class="small text-muted">Reduce waste, source better fabrics.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card p-3 text-center">
+                            <div class="mb-2"><i class="fas fa-handshake fa-2x text-primary"></i></div>
+                            <h5>Fair Partners</h5>
+                            <p class="small text-muted">Work with suppliers who respect people and craft.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card p-3 text-center">
+                            <div class="mb-2"><i class="fas fa-thumbs-up fa-2x text-warning"></i></div>
+                            <h5>Quality First</h5>
+                            <p class="small text-muted">Attention to detail in every product.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card p-3 text-center">
+                            <div class="mb-2"><i class="fas fa-truck-fast fa-2x text-danger"></i></div>
+                            <h5>Fast Delivery</h5>
+                            <p class="small text-muted">Reliable shipping across Malaysia.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Timeline / Our Story -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <h3 class="mb-4 text-center">Our Story</h3>
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="dot"></div>
+                        <h6>2020 — Founded</h6>
+                        <p class="small text-muted">Trio Closet began as a small online shop with a passion for well-made basics.</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="dot"></div>
+                        <h6>2021 — First Pop-up</h6>
+                        <p class="small text-muted">We opened our first pop-up store and met our community in person.</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="dot"></div>
+                        <h6>2023 — Expanded Range</h6>
+                        <p class="small text-muted">Introduced kids and accessories collections, and improved sustainability standards.</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="dot"></div>
+                        <h6>2025 — New HQ</h6>
+                        <p class="small text-muted">Moved operations to Johor Bahru with a dedicated team and improved logistics.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Team -->
+<section class="py-5">
+    <div class="container">
+        <h3 class="mb-4 text-center">Meet the Team</h3>
+        <div class="row g-4">
+            <div class="col-sm-6 col-md-3">
+                <div class="team-member">
+                    <img src="images/team member 1.jpeg" alt="Founder">
+                    <h6 class="mb-0">Constance Loh</h6>
+                    <small class="text-muted d-block mb-2">Founder & Creative Director</small>
+                    <p class="small text-muted">Leading design and product curation with a passion for sustainable fashion.</p>
+                    <div class="social-links">
+                        <a href="#" class="me-2"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-3">
+                <div class="team-member">
+                    <img src="images/team member 2.jpeg" alt="Operations">
+                    <h6 class="mb-0">Tan Jin Rou</h6>
+                    <small class="text-muted d-block mb-2">Operations Manager</small>
+                    <p class="small text-muted">Ensures orders are packed, shipped and delivered smoothly.</p>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-3">
+                <div class="team-member">
+                    <img src="images/team member 3.jpeg" alt="Customer support">
+                    <h6 class="mb-0">Elaine Heng</h6>
+                    <small class="text-muted d-block mb-2">Customer Support</small>
+                    <p class="small text-muted">Available to help with sizing, returns and product questions.</p>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-3">
+                <div class="team-member">
+                    <img src="images/team member 4.jpeg" alt="Marketing">
+                    <h6 class="mb-0">Makio Tey</h6>
+                    <small class="text-muted d-block mb-2">Marketing</small>
+                    <p class="small text-muted">Plans campaigns and content to share our new arrivals and offers.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA / Contact -->
+<section class="py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <div class="cta-card">
+                    <h4>Have questions or want to stock our products?</h4>
+                    <p class="mb-0">Email us at <a href="mailto:info@triocloset.com">info@triocloset.com</a> or call <a href="tel:+60182187868">+60 18-218 7868</a>. We’re happy to help.</p>
+                </div>
+            </div>
+            <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                <a href="contact.html" class="btn btn-secondary btn-lg">Contact Us</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer (shared) -->
+<footer class="footer-area section-padding black-bg">
+    <div class="container">
+        <div class="row">
+            <!-- Company Info -->
+            <div class="col-lg-4 mb-4">
+                <div class="footer-widget">
+                    <h3 class="brand-title white-color">TRIO <span>CLOSET</span></h3>
+                    <p class="footer-about white-color">Premium fashion destination offering curated collections of luxury clothing, accessories, and lifestyle products.</p>
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/p/Trio-Closet-61584444351755/"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/triocloset13?igsh=MTA0a2xodmRkeWtyaw=="><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/60182187868"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="col-lg-2 col-md-6 mb-4">
+                <div class="footer-widget">
+                    <h4 class="widget-title white-color">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html" class="white-color">Home</a></li>
+                        <li><a href="aboutus.html" class="white-color">About Us</a></li>
+                        <li><a href="shop.html" class="white-color">Shop</a></li>
+                        <li><a href="contact.html" class="white-color">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Customer Service -->
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="footer-widget">
+                    <h4 class="widget-title white-color">Customer Service</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="white-color">Shipping Policy</a></li>
+                        <li><a href="#" class="white-color">Return & Exchange</a></li>
+                        <li><a href="#" class="white-color">Size Guide</a></li>
+                        <li><a href="#" class="white-color">FAQs</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="col-lg-3 mb-4">
+                <div class="footer-widget">
+                    <h4 class="widget-title white-color">Contact Us</h4>
+                    <ul class="footer-contact">
+                        <li class="white-color"><i class="fas fa-map-marker-alt me-2"></i>Eco Palladium, B-03-25, Taman Ekoflora, 81100 Johor Bahru</li>
+                        <li class="white-color"><i class="fas fa-phone me-2"></i>+60 18-218 7868</li>
+                        <li class="white-color"><i class="fas fa-envelope me-2"></i>info@triocloset.com</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom text-center mt-3">
+            <p class="mb-0">&copy; 2026 TRIO CLOSET. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<head>
+    <title>TRIO CLOSET - Premium Fashion Store</title>
+
+   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <style>
+        .cart-empty {
+            padding: 60px 0;
+            text-align: center;
+        }
+        .cart-table img { width: 80px; height: 80px; object-fit: cover; border-radius: 6px; }
+        .qty-input { width: 80px; max-width: 100%; }
+        .summary-card { border-radius: 8px; box-shadow: 0 8px 30px rgba(0,0,0,.05); padding: 20px; background: #fff; }
+        .remove-btn { color: #dc3545; cursor: pointer; }
+        .small-muted { font-size: .9rem; color: #6c757d; }
+        @media (max-width: 767px) {
+            .qty-input { width: 100%; }
+        }
+                .search-form {
+            position: relative;
+        }
+
+        .search-input {
+            width: 180px;
+            border-radius: 20px;
+            padding: 6px 35px 6px 15px;
+            font-size: 0.9rem;
+            transition: width 0.3s ease;
+        }
+
+        .search-input:focus {
+            width: 230px;
+        }
+
+        .search-submit {
+            position: absolute;
+            right: 3px;
+            border: none;
+            background: transparent;
+            color: #333;
+            padding: 6px 10px;
+        }
+
+        .search-submit:hover {
+            color: #000;
+        }
+
+        @media (max-width: 768px) {
+            .search-input {
+                width: 140px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Header Section -->
+<header class="header-area">
+    <!-- Top Header -->
+    <div class="top-header">
+        <div class="container">
+                <div class="logo">
+                <img src="images/logo.jpeg" alt="Trio Closet Fashion Store">                
+            </div>
+                    <div class="header-social text-end">
+                        <a href="https://www.facebook.com/p/Trio-Closet-61584444351755/"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/triocloset13?igsh=MTA0a2xodmRkeWtyaw=="><i class="fab fa-instagram"></i></a>
+                        <a href="+601-2187868"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- Main Navigation -->
+   <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                <h2 class="title-fonts">TRIO CLOSET</h2>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-bs-toggle="dropdown">
+                                Pages
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="return.html" class="white-color">Return & Exchange</a></li>
+                                <li><a class="dropdown-item" href="termsofcondition">Terms of Condition</a></li>
+                                <li><a class="dropdown-item" href="faq.html">FAQ</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="shop.html">Shop</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="aboutus.html">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                    </ul>
+                    
+                    <div class="header-actions d-flex align-items-center gap-2">
+
+                    <!-- Search Bar -->
+                    <form class="search-form d-flex align-items-center" onsubmit="return handleSearch(event)">
+                        <input 
+                            type="text" 
+                            id="searchInput" 
+                            class="form-control search-input" 
+                            placeholder="Search products..."
+                            aria-label="Search"
+                        >
+                        <button type="submit" class="btn search-submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+
+                    <!-- User -->
+                    <a href="#" class="user-btn ms-2">
+                        <i class="fas fa-user"></i>
+                    </a>
+
+                    <!-- Cart -->
+                    <a href="cart.html" class="cart-btn ms-2">
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>
+
+                </div>
+                </div>
+            </div>
+        </nav>
+        </header>
+
+<!-- Page content -->
+<section class="py-5">
+    <div class="container">
+        <h1 class="mb-4">Your Cart</h1>
+
+        <div id="cartWrap" class="row g-4">
+            <!-- Left: cart items -->
+            <div class="col-lg-8" id="itemsCol">
+                <!-- Cart table will be injected here -->
+            </div>
+
+            <!-- Right: summary -->
+            <div class="col-lg-4">
+                <div class="summary-card">
+                    <h5>Order Summary</h5>
+                    <div class="d-flex justify-content-between mt-3">
+                        <span>Subtotal</span>
+                        <strong id="subtotalText">RM 0.00</strong>
+                    </div>
+                    <div class="d-flex justify-content-between mt-2">
+                        <span>Shipping</span>
+                        <strong id="shippingText">RM 0.00</strong>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-between">
+                        <span>Total</span>
+                        <strong id="totalText">RM 0.00</strong>
+                    </div>
+
+                    <div class="mt-3">
+                        <button id="checkoutBtn" class="btn btn-dark w-100 mt-3" disabled>
+                            Proceed to Checkout
+                        </button>
+                        <a href="shop.html" class="btn btn-outline-secondary w-100 mt-2">Continue Shopping</a>
+                    </div>
+
+                    <div class="mt-3 small-muted text-center">
+                        Free shipping for orders over RM 100. Shipping RM 8 otherwise.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Empty state -->
+        <div id="emptyState" class="cart-empty" style="display:none;">
+            <img src="images/empty-cart.png" alt="Empty cart" style="max-width:220px; opacity:.9;">
+            <h4 class="mt-3">Your cart is empty</h4>
+            <p class="small-muted">Looks like you haven't added anything to your cart yet.</p>
+            <a href="shop.html" class="btn btn-primary mt-2">Shop Now</a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer (shared) -->
+<footer class="footer-area section-padding black-bg">
+    <div class="container text-center py-4">
+        <p class="mb-0 text-white">© TRIO CLOSET. All rights reserved.</p>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+/*
+ Cart implementation (client-side).
+ - Stores cart in localStorage under key 'tc_cart'
+ - Supports adding by URL query ?add=ID (used elsewhere on site)
+ - Supports quantity change, remove, totals calculation and persistence
+*/
+
+// Simple product catalog for demo / mapping to site product pages
+const PRODUCT_CATALOG = {
+    "1": {
+        id: "1",
+        title: "Premium Men's Shirt",
+        price: 68.00,
+        image: "images/Mentshirt1.jpeg",
+        href: "product-detail-1.html"
+    },
+    "2": {
+        id: "2",
+        title: "Elegant Women's Dress",
+        price: 58.00,
+        image: "images/woman.jpeg",
+        href: "product-detail-2.html"
+    },
+    "3": {
+        id: "3",
+        title: "Kids Little Champs",
+        price: 35.00,
+        image: "images/kids_dress2.jpeg",
+        href: "product-detail-3.html"
+    },
+    "4": {
+        id: "4",
+        title: "Jeans Jacket",
+        price: 82.00,
+        image: "images/blazer1.jpeg",
+        href: "product-detail-4.html"
+    }
+};
+
+const STORAGE_KEY = 'tc_cart';
+const FREE_SHIPPING_THRESHOLD = 100;
+const SHIPPING_FEE = 8.00;
+
+function loadCart() {
+    try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        return raw ? JSON.parse(raw) : {};
+    } catch (e) {
+        console.error('Failed to parse cart from storage', e);
+        return {};
+    }
+}
+
+function saveCart(cart) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
+}
+
+function getQueryParam(name) {
+    const params = new URLSearchParams(window.location.search);
+    return params.get(name);
+}
+
+// Add product by id to cart (used by ?add=ID links)
+function addToCartById(id, qty = 1) {
+    const product = PRODUCT_CATALOG[id];
+    if (!product) return false;
+    const cart = loadCart();
+    if (cart[id]) cart[id].qty += qty;
+    else cart[id] = { ...product, qty: qty };
+    saveCart(cart);
+    return true;
+}
+
+function formatRM(num) {
+    return 'RM ' + Number(num).toFixed(2);
+}
+
+function renderCart() {
+    const cart = loadCart();
+    const itemsCol = document.getElementById('itemsCol');
+    const emptyState = document.getElementById('emptyState');
+    const checkoutBtn = document.getElementById('checkoutBtn');
+
+    const ids = Object.keys(cart);
+    if (ids.length === 0) {
+        itemsCol.style.display = 'none';
+        emptyState.style.display = 'block';
+        document.getElementById('subtotalText').textContent = formatRM(0);
+        document.getElementById('shippingText').textContent = formatRM(0);
+        document.getElementById('totalText').textContent = formatRM(0);
+        checkoutBtn.disabled = true;
+        return;
+    }
+
+    emptyState.style.display = 'none';
+    itemsCol.style.display = 'block';
+    checkoutBtn.disabled = false;
+
+    // Build table
+    let html = `
+        <div class="table-responsive">
+            <table class="table align-middle cart-table">
+                <thead>
+                    <tr>
+                        <th style="min-width:220px;">Product</th>
+                        <th class="text-end" style="width:120px;">Price</th>
+                        <th class="text-center" style="width:140px;">Qty</th>
+                        <th class="text-end" style="width:120px;">Subtotal</th>
+                        <th style="width:80px;"></th>
+                    </tr>
+                </thead>
+                <tbody>
+    `;
+
+    let subtotal = 0;
+
+    ids.forEach(id => {
+        const item = cart[id];
+        const itemSubtotal = item.qty * item.price;
+        subtotal += itemSubtotal;
+
+        html += `
+            <tr data-id="${id}">
+                <td>
+                    <div class="d-flex align-items-center gap-3">
+                        <a href="${item.href || '#'}"><img src="${item.image}" alt="${escapeHtml(item.title)}"></a>
+                        <div>
+                            <a href="${item.href || '#'}" class="text-decoration-none"><strong>${escapeHtml(item.title)}</strong></a>
+                            <div class="small-muted">SKU: TC-${item.id.padStart(3,'0')}</div>
+                        </div>
+                    </div>
+                </td>
+                <td class="text-end">${formatRM(item.price)}</td>
+                <td class="text-center">
+                    <div class="d-flex justify-content-center align-items-center gap-2">
+                        <button class="btn btn-sm btn-outline-secondary qty-decrease" title="Decrease">−</button>
+                        <input type="number" min="1" value="${item.qty}" class="form-control qty-input text-center" />
+                        <button class="btn btn-sm btn-outline-secondary qty-increase" title="Increase">+</button>
+                    </div>
+                </td>
+                <td class="text-end">${formatRM(itemSubtotal)}</td>
+                <td class="text-end">
+                    <button class="btn btn-sm btn-link remove-btn" title="Remove">Remove</button>
+                </td>
+            </tr>
+        `;
+    });
+
+    html += `</tbody></table></div>`;
+    itemsCol.innerHTML = html;
+
+    // Attach event listeners for qty change and remove
+    document.querySelectorAll('.qty-input').forEach(input => {
+        input.addEventListener('change', (e) => {
+            let val = parseInt(e.target.value, 10) || 1;
+            if (val < 1) val = 1;
+            const row = e.target.closest('tr');
+            const id = row.getAttribute('data-id');
+            const cart = loadCart();
+            cart[id].qty = val;
+            saveCart(cart);
+            renderCart(); // re-render to update subtotals
+        });
+    });
+
+    document.querySelectorAll('.qty-increase').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const row = e.target.closest('tr');
+            const id = row.getAttribute('data-id');
+            const cart = loadCart();
+            cart[id].qty = (cart[id].qty || 0) + 1;
+            saveCart(cart);
+            renderCart();
+        });
+    });
+
+    document.querySelectorAll('.qty-decrease').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const row = e.target.closest('tr');
+            const id = row.getAttribute('data-id');
+            const cart = loadCart();
+            cart[id].qty = Math.max(1, (cart[id].qty || 1) - 1);
+            saveCart(cart);
+            renderCart();
+        });
+    });
+
+    document.querySelectorAll('.remove-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const row = e.target.closest('tr');
+            const id = row.getAttribute('data-id');
+            removeFromCart(id);
+        });
+    });
+
+    // Update summary
+    const shipping = subtotal >= FREE_SHIPPING_THRESHOLD ? 0 : SHIPPING_FEE;
+    const total = subtotal + shipping;
+    document.getElementById('subtotalText').textContent = formatRM(subtotal);
+    document.getElementById('shippingText').textContent = formatRM(shipping);
+    document.getElementById('totalText').textContent = formatRM(total);
+}
+
+// Remove item
+function removeFromCart(id) {
+    const cart = loadCart();
+    if (!cart[id]) return;
+    delete cart[id];
+    saveCart(cart);
+    renderCart();
+}
+
+// Quick helper to escape HTML in strings
+function escapeHtml(text) {
+    const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+    return String(text).replace(/[&<>"']/g, (m) => map[m]);
+}
+
+// Checkout button: for demo we'll just clear cart and show a message
+document.getElementById('checkoutBtn').addEventListener('click', () => {
+    const cart = loadCart();
+    if (Object.keys(cart).length === 0) return;
+    // In a real app you'd redirect to checkout/payment
+    alert('Proceeding to checkout (demo). Your cart will be cleared.');
+    localStorage.removeItem(STORAGE_KEY);
+    renderCart();
+});
+
+// Support adding product by query param: ?add=ID or ?add=ID&qty=2
+(function init() {
+    const add = getQueryParam('add');
+    const qtyParam = parseInt(getQueryParam('qty') || '1', 10);
+    if (add) {
+        // add if valid id
+        if (PRODUCT_CATALOG[add]) {
+            addToCartById(add, Math.max(1, qtyParam));
+            // remove add param from URL to avoid duplicate adds on reload
+            const url = new URL(window.location);
+            url.searchParams.delete('add');
+            url.searchParams.delete('qty');
+            window.history.replaceState({}, '', url.pathname + url.search);
+        }
+    }
+
+    renderCart();
+})();
+
+</script>
+</body>
+</html>
